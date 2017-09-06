@@ -4,10 +4,12 @@
 minikube delete; sudo rm -rf ~/.minikube; sudo rm -rf ~/.kube
 
 # Start kubernetes cluster
-minikube start --memory 8000 --cpus 2 --kubernetes-version v1.6.0
+minikube start --memory 12000 --cpus 4 
+
+# --kubernetes-version v1.6.0
 
 # Enable heapster and ingress
-minikube addons enable heapster; minikube addons enable ingress; 
+# minikube addons enable heapster; minikube addons enable ingress; 
 
 # Start the kubernetes dashboard
 sleep 30; minikube service kubernetes-dashboard --namespace kube-system
@@ -65,11 +67,3 @@ kubectl rollout status deployment/kr8sswordz
 
 # Start the web app
 minikube service kr8sswordz
-
-# # Start Prometheus
-
-# scripts/prometheus-setup.sh
-
-# # Start DataDog
-
-# kubectl create -f dd-agent.yaml
